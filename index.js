@@ -48,10 +48,9 @@ var doc = htmlFile + html
 
 fs.writeFileSync('public/index.html', doc)
 
-// Resize the images
+// Resize the images and copy to public folder
 photos.forEach(photo => {
 
-  //var resized = sharp(sourceImages + photo.file).resize(1400).toFile(sourceImages + '2'+ photo.file)
   var resized = sharp(sourceImages + photo.file).resize(1400).toBuffer().then(data => {
     fs.writeFileSync('public/img/' + photo.file, data);
   })
@@ -59,16 +58,9 @@ photos.forEach(photo => {
     console.log(err)
   });
 
-
-
-
 })
 
 
-
-
-// async functions can be treated like promises
-//resize().then(console.log('Done!'));
 
 
 

@@ -8,13 +8,6 @@ $(function() {
 
     $('#blueimp-gallery .description').html(text)
 
-    // var text = this.list[index].getAttribute('data-description'),
-    //   node = this.container.find('.description')
-    // node.empty()
-    // if (text) {
-    //   node[0].appendChild(document.createTextNode(text))
-    // }
-
   });
 
 });
