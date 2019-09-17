@@ -1,7 +1,8 @@
 const fs = require('fs')
 const fse = require('fs-extra')
 const exif = require('jpeg-exif')
-var moment = require('moment')
+const moment = require('moment')
+const sharp = require('sharp')
 
 var sourceImages = './source-images/'
 var template = './resources/html.html'
@@ -15,6 +16,7 @@ var random =  Math.random().toString(36).substring(2, 15) + Math.random().toStri
 
 fse.emptyDirSync('public/img/')
 
+// Get images and metadata
 fs.readdirSync(sourceImages).filter(file => (file !== '.DS_Store')).forEach((file) => {
   var cache = {}
   cache.file = file
@@ -32,11 +34,12 @@ fs.readdirSync(sourceImages).filter(file => (file !== '.DS_Store')).forEach((fil
 
 })
 
+// Sort by creation date
 photos.sort((a,b) => (a.DateTimeOriginal > b.DateTimeOriginal) ? 1 : ((b.DateTimeOriginal > a.DateTimeOriginal) ? -1 : 0));
 
+// Build the HTML
 photos.forEach(photo => {
   html += '<a href="img/' + photo.file + '" data-gallery class="photo" style="background-image: url(img/' + photo.file +')" data-description="' + photo.date + '"></a>\n'
-  fs.copyFileSync(sourceImages + photo.file, 'public/img/' + photo.file);
 })
 
 html += '</div>\n</body>\n</html>'
@@ -45,6 +48,27 @@ var doc = htmlFile + html
 
 fs.writeFileSync('public/index.html', doc)
 
+// Resize the images
+photos.forEach(photo => {
+
+  //var resized = sharp(sourceImages + photo.file).resize(1400).toFile(sourceImages + '2'+ photo.file)
+  var resized = sharp(sourceImages + photo.file).resize(1400).toBuffer().then(data => {
+    fs.writeFileSync('public/img/' + photo.file, data);
+  })
+  .catch(err => {
+    console.log(err)
+  });
+
+
+
+
+})
+
+
+
+
+// async functions can be treated like promises
+//resize().then(console.log('Done!'));
 
 
 
