@@ -8,6 +8,8 @@ var sourceImages = './source-images/'
 var template = './resources/html.html'
 var htmlFile = fs.readFileSync(template, {encoding: 'utf-8'})
 
+var folder = './public/' + Math.random().toString(36).substring(2, 8) + Math.random().toString(36).substring(2, 8);
+
 var html = ''
 
 var photos = []
@@ -47,6 +49,11 @@ html += '</div>\n</body>\n</html>'
 var doc = htmlFile + html
 
 fs.writeFileSync('public/index.html', doc)
+
+// Create Folder
+if (!fs.existsSync(folder)){
+    fs.mkdirSync(folder);
+}
 
 // Resize the images and copy to public folder
 photos.forEach(photo => {
