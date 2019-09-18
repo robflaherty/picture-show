@@ -1,7 +1,7 @@
 {
   "name": "projector",
   "version": "0.1.0",
-  "description": "",
+  "description": "Photo Sharing",
   "main": "index.js",
   "dependencies": {
     "fs-extra": "^8.1.0",
@@ -17,7 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/robflaherty/starter-template.git"
   },
-  "author": "",
+  "author": "Rob Flaherty",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/robflaherty/starter-template/issues"
