@@ -5,18 +5,15 @@ const moment = require('moment')
 const sharp = require('sharp')
 
 var sourceImages = './source-images/'
-var template = './resources/html.html'
+var template = './template/index.html'
 var htmlFile = fs.readFileSync(template, {encoding: 'utf-8'})
-
+var templateDir = './template'
 var folder = './public/' + Math.random().toString(36).substring(2, 8) + Math.random().toString(36).substring(2, 8);
 
 var html = ''
-
 var photos = []
 
-var random =  Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-
-fse.emptyDirSync('public/img/')
+//fse.emptyDirSync('public/img/')
 
 // Get images and metadata
 fs.readdirSync(sourceImages).filter(file => (file !== '.DS_Store')).forEach((file) => {
@@ -48,18 +45,20 @@ html += '</div>\n</body>\n</html>'
 
 var doc = htmlFile + html
 
-fs.writeFileSync('public/index.html', doc)
-
 // Create Folder
 if (!fs.existsSync(folder)){
     fs.mkdirSync(folder);
 }
 
+fse.copySync(templateDir, folder)
+
+fs.writeFileSync(folder +'/index.html', doc)
+
 // Resize the images and copy to public folder
 photos.forEach(photo => {
 
   var resized = sharp(sourceImages + photo.file).resize(1400).toBuffer().then(data => {
-    fs.writeFileSync('public/img/' + photo.file, data);
+    fs.writeFileSync(folder + '/img/' + photo.file, data);
   })
   .catch(err => {
     console.log(err)
