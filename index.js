@@ -50,23 +50,24 @@ if (!fs.existsSync(folder)){
     fs.mkdirSync(folder);
 }
 
+// Copy Template
 fse.copySync(templateDir, folder)
 
+// Write index file
 fs.writeFileSync(folder +'/index.html', doc)
 
 // Resize the images and copy to public folder
-photos.forEach(photo => {
+async function resizePhotos() {
+  for (let photo of photos) {
+    let resized = await sharp(sourceImages + photo.file).resize(1400).toBuffer()
+    fs.writeFileSync(folder + '/img/' + photo.file, resized)
+    console.log(photo.file)
+  }
+}
 
-  var resized = sharp(sourceImages + photo.file).resize(1400).toBuffer().then(data => {
-    fs.writeFileSync(folder + '/img/' + photo.file, data);
-  })
-  .catch(err => {
-    console.log(err)
-  });
-
+resizePhotos().then(result => {
+  console.log('Done')
 })
-
-
 
 
 
