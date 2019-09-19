@@ -1,10 +1,22 @@
+#!/usr/bin/env node
+
 const fs = require('fs')
 const fse = require('fs-extra')
 const exif = require('jpeg-exif')
 const moment = require('moment')
 const sharp = require('sharp')
 
-var sourceImages = './source-images/'
+var argv = require('minimist')(process.argv.slice(2));
+var arg = argv['_'][0]
+
+var sourceImages;
+
+if (arg) {
+  sourceImages = arg
+} else {
+  sourceImages = './source-images/'
+}
+
 var template = './template/index.html'
 var htmlFile = fs.readFileSync(template, {encoding: 'utf-8'})
 var templateDir = './template'
@@ -13,7 +25,7 @@ var folder = './public/' + Math.random().toString(36).substring(2, 8) + Math.ran
 var html = ''
 var photos = []
 
-//fse.emptyDirSync('public/img/')
+fse.emptyDirSync('public')
 
 // Get images and metadata
 fs.readdirSync(sourceImages).filter(file => (file !== '.DS_Store')).forEach((file) => {

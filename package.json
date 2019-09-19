@@ -2,10 +2,11 @@
   "name": "projector",
   "version": "0.1.0",
   "description": "Photo Sharing",
-  "main": "index.js",
+  "main": "run.js",
   "dependencies": {
     "fs-extra": "^8.1.0",
     "jpeg-exif": "^1.1.4",
+    "minimist": "^1.2.0",
     "moment": "^2.24.0",
     "sharp": "^0.23.0"
   },
@@ -22,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/robflaherty/starter-template/issues"
   },
-  "homepage": "https://github.com/robflaherty/starter-template#readme"
+  "homepage": "https://github.com/robflaherty/starter-template#readme",
+  "bin": {
+    "projector": "./run.js"
+  }
 }
