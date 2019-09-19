@@ -7,14 +7,22 @@ const moment = require('moment')
 const sharp = require('sharp')
 
 var argv = require('minimist')(process.argv.slice(2));
-var arg = argv['_'][0]
+var dirArg = argv['_'][0]
+var widthArg = argv['w']
 
 var sourceImages;
+var width;
 
-if (arg) {
-  sourceImages = arg
+if (dirArg) {
+  sourceImages = dirArg
 } else {
   sourceImages = './source-images/'
+}
+
+if (widthArg) {
+  width = parseInt(widthArg, 10)
+} else {
+  width = 1400
 }
 
 var template = './template/index.html'
@@ -71,7 +79,7 @@ fs.writeFileSync(folder +'/index.html', doc)
 // Resize the images and copy to public folder
 async function resizePhotos() {
   for (let photo of photos) {
-    let resized = await sharp(sourceImages + photo.file).resize(1400).toBuffer()
+    let resized = await sharp(sourceImages + photo.file).resize(width).toBuffer()
     fs.writeFileSync(folder + '/img/' + photo.file, resized)
     console.log(photo.file)
   }
