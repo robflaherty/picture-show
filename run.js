@@ -15,7 +15,7 @@ var sourceImages;
 var width;
 
 if (dirArg) {
-  sourceImages = dirArg
+  sourceImages = dirArg.endsWith('/') ? dirArg : dirArg + '/'
 } else {
   sourceImages = './source-images/'
 }
