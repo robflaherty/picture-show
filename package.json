@@ -1,5 +1,5 @@
 {
-  "name": "projector",
+  "name": "slide-projector",
   "version": "0.1.0",
   "description": "Photo Sharing",
   "main": "run.js",
@@ -16,15 +16,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/robflaherty/starter-template.git"
+    "url": "git+https://github.com/robflaherty/slide-projector.git"
   },
   "author": "Rob Flaherty",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/robflaherty/starter-template/issues"
+    "url": "https://github.com/robflaherty/slide-projector/issues"
   },
-  "homepage": "https://github.com/robflaherty/starter-template#readme",
+  "homepage": "https://github.com/robflaherty/slide-projector#readme",
   "bin": {
-    "projector": "./run.js"
+    "start-projector": "./run.js"
   }
 }
