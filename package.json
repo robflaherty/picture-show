@@ -1,7 +1,7 @@
 {
   "name": "slide-projector",
   "version": "0.1.0",
-  "description": "Photo Sharing",
+  "description": "Command line tool for generating shareable photo albums",
   "main": "run.js",
   "dependencies": {
     "fs-extra": "^8.1.0",
