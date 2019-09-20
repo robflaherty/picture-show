@@ -5,6 +5,7 @@ const fse = require('fs-extra')
 const exif = require('jpeg-exif')
 const moment = require('moment')
 const sharp = require('sharp')
+const open = require("open")
 
 var argv = require('minimist')(process.argv.slice(2));
 var dirArg = argv['_'][0]
@@ -81,13 +82,11 @@ async function resizePhotos() {
   for (let photo of photos) {
     let resized = await sharp(sourceImages + photo.file).resize(width).toBuffer()
     fs.writeFileSync(folder + '/img/' + photo.file, resized)
-    console.log(photo.file)
   }
 }
 
 resizePhotos().then(result => {
-  console.log('Done')
+  console.log('Done: ' + folder + '/index.html')
+  open(folder + '/index.html');
 })
-
-
 

@@ -8,6 +8,7 @@
     "jpeg-exif": "^1.1.4",
     "minimist": "^1.2.0",
     "moment": "^2.24.0",
+    "open": "^6.4.0",
     "sharp": "^0.23.0"
   },
   "devDependencies": {},
