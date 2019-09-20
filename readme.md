@@ -1,12 +1,12 @@
-# Slide Projector
+# Picture Show
 A simple photo gallery tool for sharing photos
 
 ## Usage
-`npm install projector`
+`npm install picture-show`
 
-`start-projector`
+`picture-show`
 
-`start-projector ~/Desktop/photoFolder`
+`picture-show ~/Desktop/photoFolder`
 
-`start-projector ~Desktop/photoFolder -w 2000`
+`picture-show ~Desktop/photoFolder -w 2000`
 
