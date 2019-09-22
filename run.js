@@ -8,16 +8,26 @@ const sharp = require('sharp')
 const open = require("open")
 
 var argv = require('minimist')(process.argv.slice(2));
-var dirArg = argv['_'][0]
+var sourceDir = argv['_'][0]
+var targetDir = argv['_'][1]
 var widthArg = argv['w']
 
 var sourceImages;
+var exportDir;
 var width;
 
-if (dirArg) {
-  sourceImages = dirArg.endsWith('/') ? dirArg : dirArg + '/'
+if (sourceDir) {
+  sourceImages = sourceDir.endsWith('/') ? sourceDir : sourceDir + '/'
 } else {
-  sourceImages = './source-images/'
+  console.log('Can\'t run: Need to specify directory to parse')
+  return
+}
+
+if (targetDir) {
+  exportDir = targetDir.endsWith('/') ? targetDir : targetDir + '/'
+} else {
+  console.log('Can\'t run: Need to specify directory to export to')
+  return
 }
 
 if (widthArg) {
@@ -26,15 +36,16 @@ if (widthArg) {
   width = 1400
 }
 
-var template = './template/index.html'
+var templateDir = __dirname + '/template'
+var template = templateDir + '/index.html'
 var htmlFile = fs.readFileSync(template, {encoding: 'utf-8'})
-var templateDir = './template'
-var folder = './public/' + Math.random().toString(36).substring(2, 8) + Math.random().toString(36).substring(2, 8);
+var container = exportDir + 'picture-show/'
+var folder = container + Math.random().toString(36).substring(2, 8) + Math.random().toString(36).substring(2, 8);
 
 var html = ''
 var photos = []
 
-fse.emptyDirSync('public')
+//fse.emptyDirSync('public')
 
 // Get images and metadata
 fs.readdirSync(sourceImages).filter(file => (file !== '.DS_Store')).forEach((file) => {
@@ -67,6 +78,10 @@ html += '</div>\n</body>\n</html>'
 var doc = htmlFile + html
 
 // Create Folder
+if (!fs.existsSync(container)){
+    fs.mkdirSync(container);
+}
+
 if (!fs.existsSync(folder)){
     fs.mkdirSync(folder);
 }
