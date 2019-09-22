@@ -1,12 +1,16 @@
 # Picture Show
 A simple photo gallery tool for sharing photos
 
+## Installation
+`npm install -g picture-show`
+
 ## Usage
-`npm install picture-show`
+`$ picture-show [source images dir] [export dir]`
 
-`picture-show`
+Example
+`$ picture-show ~/Desktop/photoFolder ~/Desktop`
 
-`picture-show ~/Desktop/photoFolder`
+Example with width option
+`$ picture-show ~/Desktop/photoFolder ~/Desktop -w 2000`
 
-`picture-show ~Desktop/photoFolder -w 2000`
 
