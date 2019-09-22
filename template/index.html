@@ -12,7 +12,21 @@
   <script src="lib/jquery-3.3.1/jquery-3.3.1.min.js"></script>
   <script src="lib/blueimp/js/jquery.blueimp-gallery.min.js"></script>
 
-  <script src="js/main.js"></script>
+  <script>
+    $(function() {
+
+      $('#blueimp-gallery').on('slide', function(event, index, slide) {
+
+        var photo = $('.container a')[index]
+        var text = $(photo).data('description')
+        console.log(text)
+
+        $('#blueimp-gallery .description').html(text)
+
+      });
+
+    });
+  </script>
 </head>
 <body>
   <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-continuous=false>
