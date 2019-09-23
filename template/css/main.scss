@@ -8,26 +8,20 @@
  * Breakpoints
  */
 
-@mixin view-xl {
-  @media only screen and (min-width: 1130px) {
-    @content;
-  }
-}
-
 @mixin view-l {
-  @media only screen and (max-width: 940px) {
+  @media only screen and (max-width: 1279px) {
     @content;
   }
 }
 
 @mixin view-m {
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1049px) {
     @content;
   }
 }
 
 @mixin view-s {
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 520px) {
     @content;
   }
 }
@@ -40,7 +34,7 @@ html, body {
   height: 100%; }
 
 body {
-  background: #000;
+  background: #fff;
   font-family: sans-serif;
   font-size: 18px;
   color: #2B2E31;
@@ -96,10 +90,22 @@ h4 {
 
 
 .photo {
-  width: 200px;
-  height: 200px;
+  // width: calc(100% / 6);
+  width: 19%;
+  padding-bottom: 19%;
   display: inline-block;
   background-size: cover;
+  //max-width: 100%;
+  display: block;
+  // float: left;
+  margin: 0 0 10px;
+  //flex-grow: 1;
+
+  @include view-s {
+    width: 48%;
+    padding-bottom: 48%;
+  }
+
 }
 
 .blueimp-gallery > .description {
@@ -125,11 +131,33 @@ h4 {
   }
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
 
+.indicator {
+
+  @include view-s {
+    display: none !important;
+    }
+}
 
 
+.prev, .next {
 
+  @include view-s {
+    display: none !important;
+    }
+}
 
 
 

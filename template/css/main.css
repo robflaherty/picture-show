@@ -390,7 +390,7 @@ html, body {
   height: 100%; }
 
 body {
-  background: #000;
+  background: #fff;
   font-family: sans-serif;
   font-size: 18px;
   color: #2B2E31;
@@ -438,10 +438,16 @@ h4 {
   margin: 0 0 30px; }
 
 .photo {
-  width: 200px;
-  height: 200px;
+  width: 19%;
+  padding-bottom: 19%;
   display: inline-block;
-  background-size: cover; }
+  background-size: cover;
+  display: block;
+  margin: 0 0 10px; }
+  @media only screen and (max-width: 520px) {
+    .photo {
+      width: 48%;
+      padding-bottom: 48%; } }
 
 .blueimp-gallery > .description {
   position: absolute;
@@ -459,3 +465,21 @@ h4 {
   color: white !important; }
 .blueimp-gallery .next {
   color: white !important; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto; }
+
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between; }
+
+@media only screen and (max-width: 520px) {
+  .indicator {
+    display: none !important; } }
+
+@media only screen and (max-width: 520px) {
+  .prev, .next {
+    display: none !important; } }

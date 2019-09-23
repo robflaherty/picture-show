@@ -73,7 +73,7 @@ photos.forEach(photo => {
   html += '<a href="img/' + photo.file + '" data-gallery class="photo" style="background-image: url(img/' + photo.file +')" data-description="' + photo.date + '"></a>\n'
 })
 
-html += '</div>\n</body>\n</html>'
+html += '</div>\n</div>\n</body>\n</html>'
 
 var doc = htmlFile + html
 
