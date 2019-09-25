@@ -77,13 +77,19 @@ html += '</div>\n</div>\n</body>\n</html>'
 
 var doc = htmlFile + html
 
-// Create Folder
+// Create Picture Viewer parent dir
 if (!fs.existsSync(container)){
     fs.mkdirSync(container);
 }
 
+// Create gallery folder
 if (!fs.existsSync(folder)){
     fs.mkdirSync(folder);
+}
+
+// Create img folder
+if (!fs.existsSync(folder + '/img/')){
+    fs.mkdirSync(folder + '/img/');
 }
 
 // Copy Template
