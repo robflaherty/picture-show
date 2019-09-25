@@ -437,18 +437,6 @@ h4 {
   font-weight: normal;
   margin: 0 0 30px; }
 
-.photo {
-  width: 19%;
-  padding-bottom: 19%;
-  display: inline-block;
-  background-size: cover;
-  display: block;
-  margin: 0 0 10px; }
-  @media only screen and (max-width: 520px) {
-    .photo {
-      width: 48%;
-      padding-bottom: 48%; } }
-
 .blueimp-gallery > .description {
   position: absolute;
   top: 30px;
@@ -468,14 +456,37 @@ h4 {
 
 .container {
   max-width: 1200px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding: 0 10px; }
+  @media only screen and (max-width: 520px) {
+    .container {
+      padding: 0 10px; } }
 
 .inner {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between; }
+  flex-wrap: wrap; }
 
+.photo {
+  width: calc(20% - 6px);
+  padding-bottom: 20%;
+  display: inline-block;
+  background-size: cover;
+  display: block;
+  margin: 0 6px 6px 0; }
+  @media only screen and (max-width: 520px) {
+    .photo {
+      width: calc(50% - 6px);
+      padding-bottom: 50%; } }
+
+.photo:nth-of-type(5n) {
+  margin-right: 0; }
+
+@media only screen and (max-width: 520px) {
+  .photo:nth-of-type(2n) {
+    margin-right: 0px; }
+
+  .photo:nth-of-type(5n) {
+    margin-right: 6px; } }
 @media only screen and (max-width: 520px) {
   .indicator {
     display: none !important; } }
