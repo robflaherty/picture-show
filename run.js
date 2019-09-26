@@ -11,10 +11,12 @@ var argv = require('minimist')(process.argv.slice(2));
 var sourceDir = argv['_'][0]
 var targetDir = argv['_'][1]
 var widthArg = argv['w']
+var dateArg = argv['show-date']
 
 var sourceImages;
 var exportDir;
 var width;
+var showDate;
 
 if (sourceDir) {
   sourceImages = sourceDir.endsWith('/') ? sourceDir : sourceDir + '/'
@@ -36,6 +38,12 @@ if (widthArg) {
   width = 1400
 }
 
+if (dateArg) {
+  showDate = true
+} else {
+  showDate = false
+}
+
 var templateDir = __dirname + '/template'
 var template = templateDir + '/index.html'
 var htmlFile = fs.readFileSync(template, {encoding: 'utf-8'})
@@ -44,8 +52,6 @@ var folder = container + Math.random().toString(36).substring(2, 8) + Math.rando
 
 var html = ''
 var photos = []
-
-//fse.emptyDirSync('public')
 
 // Get images and metadata
 fs.readdirSync(sourceImages).filter(file => (file !== '.DS_Store')).forEach((file) => {
@@ -70,7 +76,14 @@ photos.sort((a,b) => (a.DateTimeOriginal > b.DateTimeOriginal) ? 1 : ((b.DateTim
 
 // Build the HTML
 photos.forEach(photo => {
-  html += '<a href="img/' + photo.file + '" data-gallery class="photo" style="background-image: url(img/' + photo.file +')" data-description="' + photo.date + '"></a>\n'
+  html += '<a href="img/' + photo.file + '" data-gallery class="photo" style="background-image: url(img/' + photo.file +')"';
+
+  if (showDate) {
+    html += ' data-description="' + photo.date + '"></a>\n';
+  } else {
+    html += '></a>\n'
+  }
+
 })
 
 html += '</div>\n</div>\n</body>\n</html>'
