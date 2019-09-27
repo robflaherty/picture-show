@@ -90,6 +90,11 @@ html += '</div>\n</div>\n</body>\n</html>'
 
 var doc = htmlFile + html
 
+// Create export dir if it doesn't exist
+if (!fs.existsSync(exportDir)){
+    fs.mkdirSync(exportDir);
+}
+
 // Create Picture Viewer parent dir
 if (!fs.existsSync(container)){
     fs.mkdirSync(container);
