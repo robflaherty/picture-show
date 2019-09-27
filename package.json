@@ -1,6 +1,6 @@
 {
   "name": "picture-show",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Command line tool for generating shareable photo albums",
   "main": "run.js",
   "dependencies": {
