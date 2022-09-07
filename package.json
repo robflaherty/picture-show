@@ -4,12 +4,12 @@
   "description": "Command line tool for generating shareable photo albums",
   "main": "run.js",
   "dependencies": {
-    "fs-extra": "^8.1.0",
+    "fs-extra": "^10.1.0",
     "jpeg-exif": "^1.1.4",
-    "minimist": "^1.2.0",
-    "moment": "^2.24.0",
-    "open": "^6.4.0",
-    "sharp": "^0.23.0"
+    "minimist": "^1.2.6",
+    "moment": "^2.29.4",
+    "open": "^8.4.0",
+    "sharp": "^0.31.0"
   },
   "devDependencies": {},
   "scripts": {
